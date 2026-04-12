@@ -10,10 +10,15 @@ let gatoY = canvas.height /2 - ALTURA_GATO / 2;
 let comidaX = Math.floor(Math.random() * 20) * 20; 
 let comidaY = Math.floor(Math.random() * 20) * 20;
 let puntaje = 0;
+let tiempo = 11;
+let velocidadTiempo = 1000;
 
 function iniciarJuego() {
-   graficarComida();
+    graficarComida();
     graficarGato();
+    restarTiempo();
+    setInterval(restarTiempo, velocidadTiempo);
+    
 }
 function graficarGato() {
     graficarRectangulo(gatoX, gatoY, ANCHO_GATO, ALTURA_GATO, "black");
@@ -35,7 +40,8 @@ function moverIzquierda() {
     limpiarCanvas();
     graficarComida();
     graficarGato();
-    detectarColision();;
+    detectarColision();
+    intervaloTiempo();
 }
 function moverDerecha() {
     gatoX = gatoX +10;
@@ -43,6 +49,7 @@ function moverDerecha() {
     graficarComida();
     graficarGato();
     detectarColision();
+    intervaloTiempo();
 }
 function moverArriba() {
     gatoY = gatoY -10;
@@ -50,6 +57,7 @@ function moverArriba() {
     graficarComida();
     graficarGato();
     detectarColision();
+    intervaloTiempo();
 }
 function moverAbajo() {
     gatoY = gatoY +10;
@@ -57,30 +65,29 @@ function moverAbajo() {
     graficarComida();
     graficarGato();
     detectarColision();
+    intervaloTiempo();
  }
 function detectarColision() {
     if (comidaX + ANCHO_COMIDA > gatoX && comidaX < gatoX + ANCHO_GATO && comidaY + ALTURA_COMIDA > gatoY && comidaY < gatoY + ALTURA_GATO) {
-        //alert("COMIDA ATRAPADA");
         aparecerComida();
         puntaje = puntaje + 1;
-        let componente=document.getElementById("puntos");
-        componente.textContent=puntaje;
+        tiempo = tiempo + 5;
+        mostrarEnSpan("puntos", puntaje);  
                 
     }
 }
-function generarAleatorio(min,max){
-    let random=Math.random();
-    let numero=random*(max-min+1);
-    let numeroEntero = Math.ceil(numero);
-    numeroEntero = numeroEntero+min-1;
-    return numeroEntero
-}
+
 function aparecerComida() {
     comidaX=generarAleatorio(0,canvas.width - ANCHO_COMIDA);
     comidaY=generarAleatorio(0,canvas.height - ALTURA_COMIDA);
 }
 
-function mostrarEnSpan(idSpan,valor){
-    let componente=document.getElementById(idSpan);
-    componente.textContent=valor;
+
+function restarTiempo() {
+    tiempo = tiempo - 1;
+    mostrarEnSpan("tiempo", tiempo);
+    if (tiempo === 0) {
+        alert("TIEMPO TERMINADO. PUNTAJE FINAL: " + puntaje);
+        clearInterval(intervaloTiempo);
+    }   
 }
