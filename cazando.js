@@ -31,22 +31,31 @@ function moverIzquierda() {
     limpiarCanvas();
     graficarComida();
     graficarGato();
+    detectarColision();
 }
 function moverDerecha() {
     gatoX = gatoX +10;
     limpiarCanvas();
     graficarComida();
     graficarGato();
+    detectarColision();
 }
 function moverArriba() {
     gatoY = gatoY -10;
     limpiarCanvas();
     graficarComida();
     graficarGato();
+    detectarColision();
 }
 function moverAbajo() {
     gatoY = gatoY +10;
     limpiarCanvas();
     graficarComida();
     graficarGato();
+    detectarColision();
+}
+function detectarColision() {
+    if (comidaX + ANCHO_COMIDA > gatoX && comidaX < gatoX + ANCHO_GATO && comidaY + ALTURA_COMIDA > gatoY && comidaY < gatoY + ALTURA_GATO) {
+        alert("COMIDA ATRAPADA");
+    }
 }
