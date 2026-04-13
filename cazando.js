@@ -12,12 +12,13 @@ let comidaY = Math.floor(Math.random() * 20) * 20;
 let puntaje = 0;
 let tiempo = 10;
 let intervaloTiempo = 1000;
+let intervalo;
 
 function iniciarJuego() {
     graficarComida();
     graficarGato();
     restarTiempo();
-    setInterval(restarTiempo, intervaloTiempo);
+    intervalo = setInterval(restarTiempo, intervaloTiempo);
     
 }
 function graficarGato() {
@@ -88,9 +89,11 @@ function restarTiempo() {
     if (tiempo === 0) {
         alert("GAME OVER. PUNTAJE FINAL: " + puntaje);
         clearInterval(intervaloTiempo);
+            clearInterval(intervalo);
     }   else {
         if (puntaje === 6) {
             alert("GANASTE! PUNTAJE FINAL: " + puntaje);
+            clearInterval(intervalo);
         }
     }
 }
