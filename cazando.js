@@ -10,14 +10,14 @@ let gatoY = canvas.height /2 - ALTURA_GATO / 2;
 let comidaX = Math.floor(Math.random() * 20) * 20; 
 let comidaY = Math.floor(Math.random() * 20) * 20;
 let puntaje = 0;
-let tiempo = 11;
-let velocidadTiempo = 1000;
+let tiempo = 10;
+let intervaloTiempo = 1000;
 
 function iniciarJuego() {
     graficarComida();
     graficarGato();
     restarTiempo();
-    setInterval(restarTiempo, velocidadTiempo);
+    setInterval(restarTiempo, intervaloTiempo);
     
 }
 function graficarGato() {
@@ -41,15 +41,14 @@ function moverIzquierda() {
     graficarComida();
     graficarGato();
     detectarColision();
-    intervaloTiempo();
-}
+    }
 function moverDerecha() {
     gatoX = gatoX +10;
     limpiarCanvas();
     graficarComida();
     graficarGato();
     detectarColision();
-    intervaloTiempo();
+    
 }
 function moverArriba() {
     gatoY = gatoY -10;
@@ -57,7 +56,7 @@ function moverArriba() {
     graficarComida();
     graficarGato();
     detectarColision();
-    intervaloTiempo();
+    
 }
 function moverAbajo() {
     gatoY = gatoY +10;
@@ -65,7 +64,7 @@ function moverAbajo() {
     graficarComida();
     graficarGato();
     detectarColision();
-    intervaloTiempo();
+    
  }
 function detectarColision() {
     if (comidaX + ANCHO_COMIDA > gatoX && comidaX < gatoX + ANCHO_GATO && comidaY + ALTURA_COMIDA > gatoY && comidaY < gatoY + ALTURA_GATO) {
@@ -87,7 +86,21 @@ function restarTiempo() {
     tiempo = tiempo - 1;
     mostrarEnSpan("tiempo", tiempo);
     if (tiempo === 0) {
-        alert("TIEMPO TERMINADO. PUNTAJE FINAL: " + puntaje);
+        alert("GAME OVER. PUNTAJE FINAL: " + puntaje);
         clearInterval(intervaloTiempo);
-    }   
+    }   else {
+        if (puntaje === 6) {
+            alert("GANASTE! PUNTAJE FINAL: " + puntaje);
+        }
+    }
+}
+function reiniciarJuego() {
+    limpiarCanvas();
+    gatoX = canvas.width / 2 - ANCHO_GATO / 2;
+    gatoY = canvas.height /2 - ALTURA_GATO / 2;
+    iniciarJuego();
+    tiempo = 11;
+    puntaje = 0;
+    mostrarEnSpan("puntos", puntaje);
+    mostrarEnSpan("tiempo", tiempo);
 }
