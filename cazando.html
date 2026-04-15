@@ -1,37 +1,44 @@
+
 <!DOCTYPE html>
-<html>
+<html lang="es">
 <head>
-  <title>Juego Cazando</title>
-   <link rel="stylesheet" href="cazando.css">
-
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Juego Cazando | Gianluca Paredes</title>
+  <link rel="stylesheet" href="cazando.css">
 </head>
-<body onload="iniciarJuego()"></body>
-<body>
+<body onload="iniciarJuego()">
 
-  <h1>Juego Cazando</h1>
-  <p>Autor: Gianluca Paredes</p>
-<canvas id="areaJuego" width="500" height="500"></canvas>
+  <header>
+    <h1>Juego Cazando</h1>
+    <p>Autor: <strong>Gianluca Paredes</strong></p>
+  </header>
 
-  <div class="controles">
-    <button onclick="moverArriba()">⬆</button>
-    <br>
-    <button onclick="moverIzquierda()">⬅</button>
-    <button onclick="moverAbajo()">⬇</button>
-    <button onclick="moverDerecha()">➡</button>
-    <br>
-    <button onclick="reiniciarJuego()">Reiniciar</button>
-  </div>
+  <main>
+    <div class="panel">
+      <span>Puntos: <strong id="puntos">0</strong></span>
+      <span>Tiempo: <strong id="tiempo">10</strong>s</span>
+    </div>
 
+    <canvas id="areaJuego" width="500" height="500"></canvas>
 
-  <div class="panel">
-    <span>Puntos: <span id="puntos">0</span></span>
-    <span>Tiempo: <span id="tiempo">10</span></span>
-  </div>
+    <div id="mensaje" role="alert"></div>
 
-  <p id="mensaje"></p>
+    <nav class="controles">
+      <div class="flechas">
+        <button onclick="moverArriba()" aria-label="Mover arriba">⬆</button>
+        <div class="fila-horizontal">
+          <button onclick="moverIzquierda()" aria-label="Mover izquierda">⬅</button>
+          <button onclick="moverAbajo()" aria-label="Mover abajo">⬇</button>
+          <button onclick="moverDerecha()" aria-label="Mover derecha">➡</button>
+        </div>
+      </div>
+      <button class="btn-reiniciar" onclick="reiniciarJuego()">Reiniciar Juego</button>
+    </nav>
+  </main>
 
-<script src="cazando.js"></script>
-<script src="utils.js"></script>
+  <!-- Scripts al final para mejor carga -->
+  <script src="utils.js"></script>
+  <script src="cazando.js"></script>
 </body>
-
 </html>
