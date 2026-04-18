@@ -75,4 +75,4 @@ button:active {
   font-weight: bold;
   color: var(--error-color);
   margin-top: 20px;
-  min-height: 1.5em; /* Evita que el layout salte cuando aparece el texto */
+  min-height: 1.5em; /* Evita que el layout salte cuando aparece el texto */}
