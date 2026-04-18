@@ -8,18 +8,20 @@
 
 body {
   text-align: center;
-  font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; /* Fuentes más modernas */
-  background-color: var(--bg-color);
+  font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
   color: var(--text-color);
   margin: 0;
   padding: 40px 20px;
   line-height: 1.6;
+
+  background: linear-gradient(135deg, #1e3c72, #2a5298);
 }
 
 h1 {
   margin-bottom: 10px;
-  color: var(--primary-color);
+  color: #ffffff; 
   font-weight: 700;
+  text-shadow: 2px 2px 5px rgba(0,0,0,0.6); 
 }
 
 .panel {
@@ -70,9 +72,28 @@ button:active {
   transform: translateY(0);
 }
 
-#mensaje {
-  font-size: 1.2rem;
-  font-weight: bold;
-  color: var(--error-color);
-  margin-top: 20px;
-  min-height: 1.5em; /* Evita que el layout salte cuando aparece el texto */}
+canvas {
+  background-image: 
+    linear-gradient(rgba(255,255,255,0.6), rgba(255,255,255,0.6)), 
+    url("gato.png");
+
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+  max-width: 100%;
+}
+.autor {
+  font-size: 1.3rem;        /* más grande */
+  font-weight: 500;
+  color: #f1f1f1;           /* claro para fondo oscuro */
+  margin-top: 5px;
+}
+
+.autor strong {
+  color: #ffd700;           /* dorado 🔥 */
+  font-size: 1.4rem;
+}

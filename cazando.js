@@ -71,7 +71,7 @@ function detectarColision() {
     if (comidaX + ANCHO_COMIDA > gatoX && comidaX < gatoX + ANCHO_GATO && comidaY + ALTURA_COMIDA > gatoY && comidaY < gatoY + ALTURA_GATO) {
         aparecerComida();
         puntaje = puntaje + 1;
-        tiempo = tiempo + 5;
+        tiempo = tiempo + 10;
         mostrarEnSpan("puntos", puntaje);  
                 
     }
@@ -102,7 +102,7 @@ function reiniciarJuego() {
     gatoX = canvas.width / 2 - ANCHO_GATO / 2;
     gatoY = canvas.height /2 - ALTURA_GATO / 2;
     iniciarJuego();
-    tiempo = 11;
+    tiempo = 18;
     puntaje = 0;
     mostrarEnSpan("puntos", puntaje);
     mostrarEnSpan("tiempo", tiempo);
