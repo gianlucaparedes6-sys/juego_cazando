@@ -10,7 +10,7 @@ let gatoY = canvas.height /2 - ALTURA_GATO / 2;
 let comidaX = Math.floor(Math.random() * 20) * 20; 
 let comidaY = Math.floor(Math.random() * 20) * 20;
 let puntaje = 0;
-let tiempo = 18;
+let tiempo = 15;
 let intervaloTiempo = 1000;
 let intervalo;
 

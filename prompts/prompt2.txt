@@ -1,0 +1,8 @@
+canvas {
+  background-image: url("gato.png");
+  background-size: contain;   /* 👈 cambia esto */
+  background-position: center;
+  background-repeat: no-repeat;
+}
+se solicito colocar la imagen dentro del canvas
+y bajar la intensidad de la imagen 
