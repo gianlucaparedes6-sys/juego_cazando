@@ -1,8 +1,8 @@
 let canvas = document.getElementById("areaJuego");
 let ctx = canvas.getContext("2d");
 const ALTURA_SUELO = 0;
-const ALTURA_GATO = 60;
-const ANCHO_GATO = 40;
+const ALTURA_GATO = 80;
+const ANCHO_GATO = 80;
 const ANCHO_COMIDA = 20;
 const ALTURA_COMIDA = 20;
 let gatoX = canvas.width / 2 - ANCHO_GATO / 2;
@@ -13,17 +13,20 @@ let puntaje = 0;
 let tiempo = 15;
 let intervaloTiempo = 1000;
 let intervalo;
-
+let imagenGato = new Image();
+imagenGato.src = "descarga.png";
 function iniciarJuego() {
-    graficarComida();
-    graficarGato();
+    imagenGato.onload = function() {
+        graficarComida();
+        graficarGato();
+    };
+
     restarTiempo();
     intervalo = setInterval(restarTiempo, intervaloTiempo);
-    
 }
 function graficarGato() {
-    graficarRectangulo(gatoX, gatoY, ANCHO_GATO, ALTURA_GATO, "black");
-   }
+    ctx.drawImage(imagenGato, gatoX, gatoY, ANCHO_GATO, ALTURA_GATO);
+}
 function graficarComida() {
     graficarRectangulo(comidaX, comidaY, ANCHO_COMIDA, ALTURA_COMIDA, "red");
    }
@@ -71,7 +74,9 @@ function detectarColision() {
     if (comidaX + ANCHO_COMIDA > gatoX && comidaX < gatoX + ANCHO_GATO && comidaY + ALTURA_COMIDA > gatoY && comidaY < gatoY + ALTURA_GATO) {
         aparecerComida();
         puntaje = puntaje + 1;
-        tiempo = tiempo -1;
+        let menos = tiempo = 15;
+        menos = menos - 1;
+        tiempo = menos;
         mostrarEnSpan("puntos", puntaje);  
                 
     }
